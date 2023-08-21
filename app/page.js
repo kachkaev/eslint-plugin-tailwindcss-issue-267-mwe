@@ -5,7 +5,7 @@ import Image from "next/image";
 cva("text-white", "bg-black", {
   someVariant: {
     s: "p-4",
-    "p-oops": "p-10", // 🎉 no ESLint error here (key is not a class name in `cva`)
+    "p-oops": "p-10",
     anything: "p-oops", // 🎉 ESLint error here: `Classname 'p-oops' is not a Tailwind CSS class! tailwindcss/no-custom-classname`
   },
 });
@@ -19,14 +19,14 @@ classnames("text-white", "bg-black", {
 const classNames = classnames;
 classNames("text-white", "bg-black", {
   "p-4": true,
-  "p-oops": true, // 🚨 no ESLint error here
+  "p-oops": true, // 🎉 ESLint error here: `Classname 'p-oops' is not a Tailwind CSS class! tailwindcss/no-custom-classname`
 });
 
 // https://www.npmjs.com/package/clsx claims to be a faster alternative to `classnames`
 const clsx = classnames;
 clsx("text-white", "bg-black", {
   "p-4": true,
-  "p-oops": true, // 🚨 no ESLint error here
+  "p-oops": true, // 🎉 ESLint error here: `Classname 'p-oops' is not a Tailwind CSS class! tailwindcss/no-custom-classname`
 });
 
 // `cn` is a shorthand for `classnames`, seen used as a wrapper for `clsx` + `tailwind-merge`
@@ -35,7 +35,7 @@ clsx("text-white", "bg-black", {
 const cn = classnames;
 cn("text-white", "bg-black", {
   "p-4": true,
-  "p-oops": true, // 🚨 no ESLint error here
+  "p-oops": true, // 🎉 ESLint error here: `Classname 'p-oops' is not a Tailwind CSS class! tailwindcss/no-custom-classname`
 });
 
 // Some people may prefer `cns` instead of `cn` as a shorthand for `classnames`
@@ -43,7 +43,7 @@ cn("text-white", "bg-black", {
 const cns = classnames;
 cns("text-white", "bg-black", {
   "p-4": true,
-  "p-oops": true, // 🚨 no ESLint error here
+  "p-oops": true, // 🎉 ESLint error here: `Classname 'p-oops' is not a Tailwind CSS class! tailwindcss/no-custom-classname`
 });
 
 export default function Home() {
