@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  eslint-plugin-tailwindcss@3.13.0:
+    hash: ps6xy7dug63sszndu646hdxyeu
+    path: patches/eslint-plugin-tailwindcss@3.13.0.patch
+
 dependencies:
   autoprefixer:
     specifier: 10.4.15
@@ -22,7 +27,7 @@ dependencies:
     version: 13.4.16(eslint@8.47.0)(typescript@5.1.6)
   eslint-plugin-tailwindcss:
     specifier: 3.13.0
-    version: 3.13.0(tailwindcss@3.3.3)
+    version: 3.13.0(patch_hash=ps6xy7dug63sszndu646hdxyeu)(tailwindcss@3.3.3)
   next:
     specifier: 13.4.16
     version: 13.4.16(react-dom@18.2.0)(react@18.2.0)
@@ -1022,7 +1027,7 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: false
 
-  /eslint-plugin-tailwindcss@3.13.0(tailwindcss@3.3.3):
+  /eslint-plugin-tailwindcss@3.13.0(patch_hash=ps6xy7dug63sszndu646hdxyeu)(tailwindcss@3.3.3):
     resolution: {integrity: sha512-Fcep4KDRLWaK3KmkQbdyKHG0P4GdXFmXdDaweTIPcgOP60OOuWFbh1++dufRT28Q4zpKTKaHwTsXPJ4O/EjU2Q==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
@@ -1032,6 +1037,7 @@ packages:
       postcss: 8.4.28
       tailwindcss: 3.3.3
     dev: false
+    patched: true
 
   /eslint-scope@7.2.2:
     resolution: {integrity: sha512-dOt21O7lTMhDM+X9mB4GX+DZrZtCUJPL/wlcTqxyrx5IvO0IYtILdtrQGQp+8n5S0gwSVmOf9NQrjMOgfQZlIg==}
