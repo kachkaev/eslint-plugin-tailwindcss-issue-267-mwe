@@ -1,4 +1,50 @@
-import Image from 'next/image'
+import { cva } from "class-variance-authority";
+import classnames from "classnames";
+import Image from "next/image";
+
+cva("text-white", "bg-black", {
+  someVariant: {
+    s: "p-4",
+    "p-oops": "p-10", // 🎉 no ESLint error here (key is not a class name in `cva`)
+    anything: "p-oops", // 🎉 ESLint error here: `Classname 'p-oops' is not a Tailwind CSS class! tailwindcss/no-custom-classname`
+  },
+});
+
+classnames("text-white", "bg-black", {
+  "p-4": true,
+  "p-oops": true, // 🎉 ESLint error here: `Classname 'p-oops' is not a Tailwind CSS class! tailwindcss/no-custom-classname`
+});
+
+// `classNames` is an alternative import name from `classnames`
+const classNames = classnames;
+classNames("text-white", "bg-black", {
+  "p-4": true,
+  "p-oops": true, // 🚨 no ESLint error here
+});
+
+// https://www.npmjs.com/package/clsx claims to be a faster alternative to `classnames`
+const clsx = classnames;
+clsx("text-white", "bg-black", {
+  "p-4": true,
+  "p-oops": true, // 🚨 no ESLint error here
+});
+
+// `cn` is a shorthand for `classnames`, seen used as a wrapper for `clsx` + `tailwind-merge`
+// https://github.com/reactjs/react.dev/blob/842c24c9aefaa60b7ae9b46b002bd1b3cf4d31f3/src/components/Tag.tsx#L5
+// https://github.com/shadcn-ui/ui/blob/33a5fc7966cfe8887dac732f64582f40162869c6/apps/www/lib/utils.ts#L4-L6
+const cn = classnames;
+cn("text-white", "bg-black", {
+  "p-4": true,
+  "p-oops": true, // 🚨 no ESLint error here
+});
+
+// Some people may prefer `cns` instead of `cn` as a shorthand for `classnames`
+// https://github.com/francoismassart/eslint-plugin-tailwindcss/issues/99#issuecomment-1014361250
+const cns = classnames;
+cns("text-white", "bg-black", {
+  "p-4": true,
+  "p-oops": true, // 🚨 no ESLint error here
+});
 
 export default function Home() {
   return (
@@ -15,7 +61,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -47,7 +93,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
+            Docs{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -64,7 +110,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
+            Learn{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -81,7 +127,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
+            Templates{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -98,7 +144,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
+            Deploy{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               -&gt;
             </span>
@@ -109,5 +155,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }

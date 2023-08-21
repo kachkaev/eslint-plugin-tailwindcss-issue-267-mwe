@@ -1,5 +1,21 @@
 {
   "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended"],
+  "settings": {
+    "tailwindcss": {
+      "config": "./tailwind.config.js",
+      "callees": [
+        "cva", // https://cva.style
+
+        // a project is typically configured with one of these, the shape of arguments match `classnames`
+        "classnames",
+        "classNames",
+        "clsx",
+        "cn",
+        "cns",
+        "cx"
+      ]
+    }
+  },
   "rules": {
     "tailwindcss/no-custom-classname": "error"
   }
