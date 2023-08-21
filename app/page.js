@@ -5,7 +5,7 @@ import Image from "next/image";
 cva("text-white", "bg-black", {
   someVariant: {
     s: "p-4",
-    "p-oops": "p-10",
+    "p-oops": "p-10", // 🎉 no ESLint error here (key is not a class name in `cva`)
     anything: "p-oops", // 🎉 ESLint error here: `Classname 'p-oops' is not a Tailwind CSS class! tailwindcss/no-custom-classname`
   },
 });
